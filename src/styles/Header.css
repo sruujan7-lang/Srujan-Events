@@ -39,6 +39,7 @@
   background: none;
   border: none;
   color: var(--text-primary);
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
@@ -141,14 +142,13 @@
   transition: background-color 0.3s ease;
 }
 
-
 /* Normal nav link color (before scroll) */
 .nav-link {
-  color: #333;   /* dark text on light background */
+  color: #333; /* dark text on light background */
   transition: color 0.3s ease;
 }
 
 /* Scroll par nav link white ho jaye */
 .header-scrolled .nav-link {
-  color: #fff;   /* white text on black background */
+  color: #fff; /* white text on black background */
 }
