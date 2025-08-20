@@ -30,8 +30,8 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <div className="contact-header">
-        <h1>Srujan Events</h1>
-        <p className="tagline">Remembered Always</p>
+        <h1>Contact Us</h1>
+        <p className="tagline"></p>
         <p className="intro">
           We're here to help make your event dreams come true. Reach out to us
           through any of the following methods:
@@ -61,7 +61,7 @@ const Contact = () => {
         </div>
 
         {/* Right Side - Contact Form */}
-        <div className="contact-form">
+        <div className="contact-form" id="contact">
           <h2>Send Us a Message</h2>
           <form ref={form} onSubmit={sendEmail}>
             <input

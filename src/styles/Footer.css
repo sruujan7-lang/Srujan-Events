@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   gap: calc(var(--spacing-unit) * 1);
-  color: rgba(8, 8, 8, 0.7);
+  color: white;
 }
 
 .contact-item svg {

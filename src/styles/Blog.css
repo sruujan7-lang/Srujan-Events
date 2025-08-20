@@ -148,27 +148,27 @@
     grid-template-columns: 1fr;
     gap: calc(var(--spacing-unit) * 3);
   }
-  
+
   .blog-image {
     height: 200px;
   }
-  
+
   .blog-content {
     padding: calc(var(--spacing-unit) * 3);
   }
-  
+
   .blog-meta {
     gap: calc(var(--spacing-unit) * 2);
   }
-  
+
   .blog-title {
     font-size: 1.125rem;
   }
-  
+
   .blog-cta {
     padding: calc(var(--spacing-unit) * 4);
   }
-  
+
   .blog-cta h3 {
     font-size: 1.5rem;
   }
@@ -179,9 +179,16 @@
     flex-direction: column;
     gap: calc(var(--spacing-unit) * 1);
   }
-  
+
   .blog-category {
     font-size: 0.75rem;
     padding: calc(var(--spacing-unit) / 3) var(--spacing-unit);
   }
+}
+
+.blog-full-content {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
 }

@@ -5,15 +5,16 @@ import "../styles/Blog.css";
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedPostId, setExpandedPostId] = useState(null); // 👈 New state
 
-  // Sample blog posts data
   const samplePosts = [
     {
       id: 1,
       title: "10 Tips for Planning the Perfect Wedding",
       excerpt:
         "Planning your dream wedding? Here are essential tips to make your special day unforgettable and stress-free.",
-      content: "Full blog content here...",
+      content:
+        "Start by setting a realistic budget, choosing the right venue, and hiring experienced vendors. Don’t forget to create a detailed timeline and communicate clearly with your guests. Personal touches like custom decor and curated playlists can make your wedding truly memorable.",
       category: "Wedding",
       createdAt: "2024-01-15T10:00:00Z",
       image:
@@ -24,7 +25,8 @@ const Blog = () => {
       title: "Corporate Event Trends for 2024",
       excerpt:
         "Discover the latest trends in corporate event planning that will make your next business event stand out.",
-      content: "Full blog content here...",
+      content:
+        "Hybrid events, immersive tech experiences, and sustainability are leading the way. Companies are focusing on employee engagement, wellness zones, and interactive formats to boost participation and ROI.",
       category: "Corporate",
       createdAt: "2024-01-10T14:30:00Z",
       image:
@@ -35,7 +37,8 @@ const Blog = () => {
       title: "Creating Magical Children's Birthday Parties",
       excerpt:
         "Transform your child's birthday into a magical experience with these creative ideas and themes.",
-      content: "Full blog content here...",
+      content:
+        "Think themed decorations, interactive games, and personalized party favors. Hiring entertainers like magicians or puppeteers adds excitement. Don’t forget a photo booth to capture the fun!",
       category: "Birthday",
       createdAt: "2024-01-05T09:15:00Z",
       image:
@@ -44,7 +47,6 @@ const Blog = () => {
   ];
 
   useEffect(() => {
-    // Simulate API call
     setTimeout(() => {
       setPosts(samplePosts);
       setLoading(false);
@@ -88,35 +90,47 @@ const Blog = () => {
           </div>
         ) : (
           <div className="blog-grid">
-            {posts.map((post) => (
-              <article key={post.id} className="blog-card">
-                <div className="blog-image">
-                  <img src={post.image} alt={post.title} />
-                  <div className="blog-category">{post.category}</div>
-                </div>
-
-                <div className="blog-content">
-                  <div className="blog-meta">
-                    <div className="meta-item">
-                      <Calendar size={16} />
-                      <span>{formatDate(post.createdAt)}</span>
-                    </div>
-                    <div className="meta-item">
-                      <User size={16} />
-                      <span>Srujan Events</span>
-                    </div>
+            {posts.map((post) => {
+              const isExpanded = expandedPostId === post.id;
+              return (
+                <article key={post.id} className="blog-card">
+                  <div className="blog-image">
+                    <img src={post.image} alt={post.title} />
+                    <div className="blog-category">{post.category}</div>
                   </div>
 
-                  <h3 className="blog-title">{post.title}</h3>
-                  <p className="blog-excerpt">{post.excerpt}</p>
+                  <div className="blog-content">
+                    <div className="blog-meta">
+                      <div className="meta-item">
+                        <Calendar size={16} />
+                        <span>{formatDate(post.createdAt)}</span>
+                      </div>
+                      <div className="meta-item">
+                        <User size={16} />
+                        <span>Srujan Events</span>
+                      </div>
+                    </div>
 
-                  <button className="blog-read-more">
-                    Read More
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-              </article>
-            ))}
+                    <h3 className="blog-title">{post.title}</h3>
+                    <p className="blog-excerpt">{post.excerpt}</p>
+
+                    {isExpanded && (
+                      <p className="blog-full-content">{post.content}</p>
+                    )}
+
+                    <button
+                      className="blog-read-more"
+                      onClick={() =>
+                        setExpandedPostId(isExpanded ? null : post.id)
+                      }
+                    >
+                      {isExpanded ? "Show Less" : "Read More"}
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         )}
 
